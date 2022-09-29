@@ -1,1 +1,0 @@
-# amanohara.github.io
