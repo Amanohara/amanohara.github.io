@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面直角座標系</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // GeoJSON データのURL
+        const geojsonDataUrl = 'https://dandango.pw/wp-content/uploads/2023/05/heimenchokkaku.geojson';
+
+        // 地図の初期化
+        const map = L.map('map').setView([35.6895, 139.6917], 10); // 東京都心を中心に設定
+
+        // ベースレイヤーの追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // zone に基づいて色を返す関数
+        function getColor(zone) {
+            // zone 1 ～ 19 までの整数を確認
+            if (zone >= 1 && zone <= 19) {
+                // ランダムな 16 進数の色コードを生成
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                return randomColor;
+            }
+            return '#ffffff';
+        }
+
+        // スタイル関数
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.zone),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7
+            };
+        }
+
+        // GeoJSON データの読み込みと表示
+        fetch(geojsonDataUrl)
+            .then(response => response.json())
+            .then(data => {
+                L.geoJson(data, { style: style }).addTo(map);
+            });
+    </script>
+</body>
+</html>
