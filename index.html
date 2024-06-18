@@ -13,9 +13,11 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-        #map {
-            width: 1254px;
-            height: 935px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -35,11 +37,11 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/bv118_TP_2.js"></script>
+        <script src="data/bv114_4.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[37.46751041897888,137.08310207991028],[37.48243628874518,137.10833980387574]]);
+        }).fitBounds([[37.46717043036044,137.07778181858066],[37.4905167178312,137.118904573089]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -101,19 +103,45 @@
         });
         layer__0;
         map.addLayer(layer__0);
-        map.createPane('pane_1_1');
-        map.getPane('pane_1_1').style.zIndex = 401;
-        var img_1_1 = 'data/1_1.png';
-        var img_bounds_1_1 = [[37.47076779797104,137.08804554082516],[37.484318988277984,137.11208146841116]];
-        var layer_1_1 = new L.imageOverlay(img_1_1,
-                                              img_bounds_1_1,
-                                              {pane: 'pane_1_1'});
-        bounds_group.addLayer(layer_1_1);
-        map.addLayer(layer_1_1);
-        function pop_bv118_TP_2(feature, layer) {
+        map.createPane('pane_Google_1');
+        map.getPane('pane_Google_1').style.zIndex = 401;
+        var layer_Google_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_Google_1',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 21
+        });
+        layer_Google_1;
+        map.addLayer(layer_Google_1);
+        map.createPane('pane_Google_2');
+        map.getPane('pane_Google_2').style.zIndex = 402;
+        var layer_Google_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s@189&x={x}&y={y}&z={z}', {
+            pane: 'pane_Google_2',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_Google_2;
+        map.addLayer(layer_Google_2);
+        map.createPane('pane_dem_3');
+        map.getPane('pane_dem_3').style.zIndex = 403;
+        var img_dem_3 = 'data/dem_3.png';
+        var img_bounds_dem_3 = [[37.47123943240453,137.08860189734955],[37.48412000535456,137.1114483772813]];
+        var layer_dem_3 = new L.imageOverlay(img_dem_3,
+                                              img_bounds_dem_3,
+                                              {pane: 'pane_dem_3'});
+        bounds_group.addLayer(layer_dem_3);
+        map.addLayer(layer_dem_3);
+        function pop_bv114_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Text'] !== null ? autolinker.link(feature.properties['Text'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['ELEV1'] !== null ? autolinker.link(feature.properties['ELEV1'].toLocaleString()) : '') + '</td>\
@@ -126,10 +154,10 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_bv118_TP_2_0() {
+        function style_bv114_4_0() {
             return {
-                pane: 'pane_bv118_TP_2',
-                radius: 8.0,
+                pane: 'pane_bv114_4',
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -138,34 +166,36 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(229,182,54,1.0)',
+                fillColor: 'rgba(255,1,73,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_bv118_TP_2');
-        map.getPane('pane_bv118_TP_2').style.zIndex = 402;
-        map.getPane('pane_bv118_TP_2').style['mix-blend-mode'] = 'normal';
-        var layer_bv118_TP_2 = new L.geoJson(json_bv118_TP_2, {
+        map.createPane('pane_bv114_4');
+        map.getPane('pane_bv114_4').style.zIndex = 404;
+        map.getPane('pane_bv114_4').style['mix-blend-mode'] = 'normal';
+        var layer_bv114_4 = new L.geoJson(json_bv114_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_bv118_TP_2',
-            layerName: 'layer_bv118_TP_2',
-            pane: 'pane_bv118_TP_2',
-            onEachFeature: pop_bv118_TP_2,
+            dataVar: 'json_bv114_4',
+            layerName: 'layer_bv114_4',
+            pane: 'pane_bv114_4',
+            onEachFeature: pop_bv114_4,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_bv118_TP_2_0(feature));
+                return L.circleMarker(latlng, style_bv114_4_0(feature));
             },
         });
-        bounds_group.addLayer(layer_bv118_TP_2);
-        map.addLayer(layer_bv118_TP_2);
+        bounds_group.addLayer(layer_bv114_4);
+        map.addLayer(layer_bv114_4);
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/bv118_TP_2.png" /> bv118_TP', layer: layer_bv118_TP_2},
-            {label: "レイアウト 1", layer: layer_1_1},
+            {label: '<img src="legend/bv114_4.png" /> bv114+', layer: layer_bv114_4},
+            {label: "dem", layer: layer_dem_3},
+            {label: "Google 航空写真", layer: layer_Google_2},
+            {label: "Google", layer: layer_Google_1},
             {label: "標準地図", layer: layer__0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -183,15 +213,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_bv118_TP_2]);
+        resetLabels([layer_bv114_4]);
         map.on("zoomend", function(){
-            resetLabels([layer_bv118_TP_2]);
+            resetLabels([layer_bv114_4]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_bv118_TP_2]);
+            resetLabels([layer_bv114_4]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_bv118_TP_2]);
+            resetLabels([layer_bv114_4]);
         });
         </script>
     </body>
