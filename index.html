@@ -37,11 +37,11 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/bv114_3.js"></script>
+        <script src="data/bv114_5.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[37.47119041173962,137.08998283518127],[37.48362383059009,137.10944588204498]]);
+        }).fitBounds([[37.47119001226493,137.0893695223377],[37.483624126077174,137.11005909372167]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -90,10 +90,36 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane__0');
-        map.getPane('pane__0').style.zIndex = 400;
-        var layer__0 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-            pane: 'pane__0',
+        map.createPane('pane_Google_0');
+        map.getPane('pane_Google_0').style.zIndex = 400;
+        var layer_Google_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_Google_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 21
+        });
+        layer_Google_0;
+        map.addLayer(layer_Google_0);
+        map.createPane('pane_Google_1');
+        map.getPane('pane_Google_1').style.zIndex = 401;
+        var layer_Google_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s@189&x={x}&y={y}&z={z}', {
+            pane: 'pane_Google_1',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_Google_1;
+        map.addLayer(layer_Google_1);
+        map.createPane('pane__2');
+        map.getPane('pane__2').style.zIndex = 402;
+        var layer__2 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+            pane: 'pane__2',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
@@ -101,27 +127,27 @@
             minNativeZoom: 0,
             maxNativeZoom: 18
         });
-        layer__0;
-        map.addLayer(layer__0);
-        map.createPane('pane__1');
-        map.getPane('pane__1').style.zIndex = 401;
-        var img__1 = 'data/_1.png';
-        var img_bounds__1 = [[37.47161593122115,137.08964388746963],[37.48298119479002,137.1098024892992]];
-        var layer__1 = new L.imageOverlay(img__1,
-                                              img_bounds__1,
-                                              {pane: 'pane__1'});
-        bounds_group.addLayer(layer__1);
-        map.addLayer(layer__1);
-        map.createPane('pane__2');
-        map.getPane('pane__2').style.zIndex = 402;
-        var img__2 = 'data/_2.png';
-        var img_bounds__2 = [[37.47176129492902,137.09001508538103],[37.483126495045155,137.1101736702775]];
-        var layer__2 = new L.imageOverlay(img__2,
-                                              img_bounds__2,
-                                              {pane: 'pane__2'});
-        bounds_group.addLayer(layer__2);
+        layer__2;
         map.addLayer(layer__2);
-        function pop_bv114_3(feature, layer) {
+        map.createPane('pane__3');
+        map.getPane('pane__3').style.zIndex = 403;
+        var img__3 = 'data/_3.png';
+        var img_bounds__3 = [[37.47161593122115,137.08964388746963],[37.48298119479002,137.1098024892992]];
+        var layer__3 = new L.imageOverlay(img__3,
+                                              img_bounds__3,
+                                              {pane: 'pane__3'});
+        bounds_group.addLayer(layer__3);
+        map.addLayer(layer__3);
+        map.createPane('pane__low_4');
+        map.getPane('pane__low_4').style.zIndex = 404;
+        var img__low_4 = 'data/_low_4.png';
+        var img_bounds__low_4 = [[37.4717624385394,137.09001364759186],[37.48312763889842,137.11017223301275]];
+        var layer__low_4 = new L.imageOverlay(img__low_4,
+                                              img_bounds__low_4,
+                                              {pane: 'pane__low_4'});
+        bounds_group.addLayer(layer__low_4);
+        map.addLayer(layer__low_4);
+        function pop_bv114_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
@@ -137,9 +163,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_bv114_3_0() {
+        function style_bv114_5_0() {
             return {
-                pane: 'pane_bv114_3',
+                pane: 'pane_bv114_5',
                 radius: 6.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
@@ -153,32 +179,34 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_bv114_3');
-        map.getPane('pane_bv114_3').style.zIndex = 403;
-        map.getPane('pane_bv114_3').style['mix-blend-mode'] = 'normal';
-        var layer_bv114_3 = new L.geoJson(json_bv114_3, {
+        map.createPane('pane_bv114_5');
+        map.getPane('pane_bv114_5').style.zIndex = 405;
+        map.getPane('pane_bv114_5').style['mix-blend-mode'] = 'normal';
+        var layer_bv114_5 = new L.geoJson(json_bv114_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_bv114_3',
-            layerName: 'layer_bv114_3',
-            pane: 'pane_bv114_3',
-            onEachFeature: pop_bv114_3,
+            dataVar: 'json_bv114_5',
+            layerName: 'layer_bv114_5',
+            pane: 'pane_bv114_5',
+            onEachFeature: pop_bv114_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_bv114_3_0(feature));
+                return L.circleMarker(latlng, style_bv114_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_bv114_3);
-        map.addLayer(layer_bv114_3);
+        bounds_group.addLayer(layer_bv114_5);
+        map.addLayer(layer_bv114_5);
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/bv114_3.png" /> bv114+', layer: layer_bv114_3},
-            {label: "発災後", layer: layer__2},
-            {label: "発災前", layer: layer__1},
-            {label: "標準地図", layer: layer__0},]
+            {label: '<img src="legend/bv114_5.png" /> bv114+', layer: layer_bv114_5},
+            {label: "発災後_low", layer: layer__low_4},
+            {label: "発災前", layer: layer__3},
+            {label: "標準地図", layer: layer__2},
+            {label: "Google 航空写真", layer: layer_Google_1},
+            {label: "Google", layer: layer_Google_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
