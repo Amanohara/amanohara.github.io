@@ -129,24 +129,24 @@
         });
         layer__2;
         map.addLayer(layer__2);
-        map.createPane('pane__3');
-        map.getPane('pane__3').style.zIndex = 403;
-        var img__3 = 'data/_3.png';
-        var img_bounds__3 = [[37.47161593122115,137.08964388746963],[37.48298119479002,137.1098024892992]];
-        var layer__3 = new L.imageOverlay(img__3,
-                                              img_bounds__3,
-                                              {pane: 'pane__3'});
-        bounds_group.addLayer(layer__3);
-        map.addLayer(layer__3);
-        map.createPane('pane__low_4');
-        map.getPane('pane__low_4').style.zIndex = 404;
-        var img__low_4 = 'data/_low_4.png';
-        var img_bounds__low_4 = [[37.4717624385394,137.09001364759186],[37.48312763889842,137.11017223301275]];
-        var layer__low_4 = new L.imageOverlay(img__low_4,
-                                              img_bounds__low_4,
-                                              {pane: 'pane__low_4'});
-        bounds_group.addLayer(layer__low_4);
-        map.addLayer(layer__low_4);
+        map.createPane('pane_after_3');
+        map.getPane('pane_after_3').style.zIndex = 403;
+        var img_after_3 = 'data/after_3.png';
+        var img_bounds_after_3 = [[37.47176129492902,137.09001508538103],[37.483126495045155,137.1101736702775]];
+        var layer_after_3 = new L.imageOverlay(img_after_3,
+                                              img_bounds_after_3,
+                                              {pane: 'pane_after_3'});
+        bounds_group.addLayer(layer_after_3);
+        map.addLayer(layer_after_3);
+        map.createPane('pane_before_4');
+        map.getPane('pane_before_4').style.zIndex = 404;
+        var img_before_4 = 'data/before_4.png';
+        var img_bounds_before_4 = [[37.47161593122115,137.08964388746963],[37.48298119479002,137.1098024892992]];
+        var layer_before_4 = new L.imageOverlay(img_before_4,
+                                              img_bounds_before_4,
+                                              {pane: 'pane_before_4'});
+        bounds_group.addLayer(layer_before_4);
+        map.addLayer(layer_before_4);
         function pop_bv114_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -202,8 +202,8 @@
         var baseMaps = {};
         var overlaysTree = [
             {label: '<img src="legend/bv114_5.png" /> bv114+', layer: layer_bv114_5},
-            {label: "発災後_low", layer: layer__low_4},
-            {label: "発災前", layer: layer__3},
+            {label: "before", layer: layer_before_4},
+            {label: "after", layer: layer_after_3},
             {label: "標準地図", layer: layer__2},
             {label: "Google 航空写真", layer: layer_Google_1},
             {label: "Google", layer: layer_Google_0},]
