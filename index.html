@@ -36,12 +36,13 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="js/leaflet-tilelayer-wmts.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/bv114_5.js"></script>
+        <script src="data/bv114_6.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[37.47119001226493,137.0893695223377],[37.483624126077174,137.11005909372167]]);
+        }).fitBounds([[37.47070010694347,137.0891042579652],[37.4831334168013,137.10805259929217]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -129,15 +130,21 @@
         });
         layer__2;
         map.addLayer(layer__2);
-        map.createPane('pane_after_3');
-        map.getPane('pane_after_3').style.zIndex = 403;
-        var img_after_3 = 'data/after_3.png';
-        var img_bounds_after_3 = [[37.47176129492902,137.09001508538103],[37.483126495045155,137.1101736702775]];
-        var layer_after_3 = new L.imageOverlay(img_after_3,
-                                              img_bounds_after_3,
-                                              {pane: 'pane_after_3'});
-        bounds_group.addLayer(layer_after_3);
-        map.addLayer(layer_after_3);
+        map.createPane('pane_51_2002_3');
+        map.getPane('pane_51_2002_3').style.zIndex = 403;
+        var layer_51_2002_3 = L.tileLayer.wmts('https://gbank.gsj.jp/geonavi/maptile/wmts/1.0.0/WMTSCapabilities.xm', {
+            pane: 'pane_51_2002_3',
+            layer: 'G50_10_003004006007suzumisaki-notoiida',
+            tilematrixSet: 'GoogleMapsCompatible',
+            format: 'image/png',
+            style: 'default',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            opacity: 1.0,
+            attribution: '',
+        });
+        map.addLayer(layer_51_2002_3);
         map.createPane('pane_before_4');
         map.getPane('pane_before_4').style.zIndex = 404;
         var img_before_4 = 'data/before_4.png';
@@ -147,7 +154,16 @@
                                               {pane: 'pane_before_4'});
         bounds_group.addLayer(layer_before_4);
         map.addLayer(layer_before_4);
-        function pop_bv114_5(feature, layer) {
+        map.createPane('pane_after_5');
+        map.getPane('pane_after_5').style.zIndex = 405;
+        var img_after_5 = 'data/after_5.png';
+        var img_bounds_after_5 = [[37.47176129492902,137.09001508538103],[37.483126495045155,137.1101736702775]];
+        var layer_after_5 = new L.imageOverlay(img_after_5,
+                                              img_bounds_after_5,
+                                              {pane: 'pane_after_5'});
+        bounds_group.addLayer(layer_after_5);
+        map.addLayer(layer_after_5);
+        function pop_bv114_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
@@ -163,9 +179,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_bv114_5_0() {
+        function style_bv114_6_0() {
             return {
-                pane: 'pane_bv114_5',
+                pane: 'pane_bv114_6',
                 radius: 6.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
@@ -179,31 +195,32 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_bv114_5');
-        map.getPane('pane_bv114_5').style.zIndex = 405;
-        map.getPane('pane_bv114_5').style['mix-blend-mode'] = 'normal';
-        var layer_bv114_5 = new L.geoJson(json_bv114_5, {
+        map.createPane('pane_bv114_6');
+        map.getPane('pane_bv114_6').style.zIndex = 406;
+        map.getPane('pane_bv114_6').style['mix-blend-mode'] = 'normal';
+        var layer_bv114_6 = new L.geoJson(json_bv114_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_bv114_5',
-            layerName: 'layer_bv114_5',
-            pane: 'pane_bv114_5',
-            onEachFeature: pop_bv114_5,
+            dataVar: 'json_bv114_6',
+            layerName: 'layer_bv114_6',
+            pane: 'pane_bv114_6',
+            onEachFeature: pop_bv114_6,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_bv114_5_0(feature));
+                return L.circleMarker(latlng, style_bv114_6_0(feature));
             },
         });
-        bounds_group.addLayer(layer_bv114_5);
-        map.addLayer(layer_bv114_5);
+        bounds_group.addLayer(layer_bv114_6);
+        map.addLayer(layer_bv114_6);
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/bv114_5.png" /> bv114+', layer: layer_bv114_5},
+            {label: '<img src="legend/bv114_6.png" /> bv114+', layer: layer_bv114_6},
+            {label: "after", layer: layer_after_5},
             {label: "before", layer: layer_before_4},
-            {label: "after", layer: layer_after_3},
+            {label: "5万分の1地質図幅_珠洲岬、能登飯田及び宝立山(2002)", layer: layer_51_2002_3},
             {label: "標準地図", layer: layer__2},
             {label: "Google 航空写真", layer: layer_Google_1},
             {label: "Google", layer: layer_Google_0},]
