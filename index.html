@@ -36,7 +36,6 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-tilelayer-wmts.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/bv114_6.js"></script>
         <script>
@@ -130,21 +129,15 @@
         });
         layer__2;
         map.addLayer(layer__2);
-        map.createPane('pane_51_2002_3');
-        map.getPane('pane_51_2002_3').style.zIndex = 403;
-        var layer_51_2002_3 = L.tileLayer.wmts('https://gbank.gsj.jp/geonavi/maptile/wmts/1.0.0/WMTSCapabilities.xm', {
-            pane: 'pane_51_2002_3',
-            layer: 'G50_10_003004006007suzumisaki-notoiida',
-            tilematrixSet: 'GoogleMapsCompatible',
-            format: 'image/png',
-            style: 'default',
-            uppercase: true,
-            transparent: true,
-            continuousWorld : true,
-            opacity: 1.0,
-            attribution: '',
-        });
-        map.addLayer(layer_51_2002_3);
+        map.createPane('pane_aist_3');
+        map.getPane('pane_aist_3').style.zIndex = 403;
+        var img_aist_3 = 'data/aist_3.png';
+        var img_bounds_aist_3 = [[37.46086000906852,137.07216862791464],[37.49359123942054,137.13022470593498]];
+        var layer_aist_3 = new L.imageOverlay(img_aist_3,
+                                              img_bounds_aist_3,
+                                              {pane: 'pane_aist_3'});
+        bounds_group.addLayer(layer_aist_3);
+        map.addLayer(layer_aist_3);
         map.createPane('pane_before_4');
         map.getPane('pane_before_4').style.zIndex = 404;
         var img_before_4 = 'data/before_4.png';
@@ -220,7 +213,7 @@
             {label: '<img src="legend/bv114_6.png" /> bv114+', layer: layer_bv114_6},
             {label: "after", layer: layer_after_5},
             {label: "before", layer: layer_before_4},
-            {label: "5万分の1地質図幅_珠洲岬、能登飯田及び宝立山(2002)", layer: layer_51_2002_3},
+            {label: "aist", layer: layer_aist_3},
             {label: "標準地図", layer: layer__2},
             {label: "Google 航空写真", layer: layer_Google_1},
             {label: "Google", layer: layer_Google_0},]
