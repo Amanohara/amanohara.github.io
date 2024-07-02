@@ -13,11 +13,9 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
+        #map {
+            width: 1521px;
+            height: 972px;
         }
         </style>
         <title></title>
@@ -29,6 +27,7 @@
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
         <script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -37,11 +36,13 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/bv114_6.js"></script>
+        <script src="data/_3.js"></script>
+        <script src="data/_4.js"></script>
+        <script src="data/entities_5.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[37.47070010694347,137.0891042579652],[37.4831334168013,137.10805259929217]]);
+        }).fitBounds([[35.66013718453331,139.76517573144343],[35.66420771310113,139.77298192505117]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -103,23 +104,10 @@
         });
         layer_Google_0;
         map.addLayer(layer_Google_0);
-        map.createPane('pane_Google_1');
-        map.getPane('pane_Google_1').style.zIndex = 401;
-        var layer_Google_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s@189&x={x}&y={y}&z={z}', {
-            pane: 'pane_Google_1',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 1,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 22
-        });
-        layer_Google_1;
-        map.addLayer(layer_Google_1);
-        map.createPane('pane__2');
-        map.getPane('pane__2').style.zIndex = 402;
-        var layer__2 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-            pane: 'pane__2',
+        map.createPane('pane__1');
+        map.getPane('pane__1').style.zIndex = 401;
+        var layer__1 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+            pane: 'pane__1',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
@@ -127,42 +115,25 @@
             minNativeZoom: 0,
             maxNativeZoom: 18
         });
-        layer__2;
-        map.addLayer(layer__2);
-        map.createPane('pane_aist_3');
-        map.getPane('pane_aist_3').style.zIndex = 403;
-        var img_aist_3 = 'data/aist_3.png';
-        var img_bounds_aist_3 = [[37.46086000906852,137.07216862791464],[37.49359123942054,137.13022470593498]];
-        var layer_aist_3 = new L.imageOverlay(img_aist_3,
-                                              img_bounds_aist_3,
-                                              {pane: 'pane_aist_3'});
-        bounds_group.addLayer(layer_aist_3);
-        map.addLayer(layer_aist_3);
-        map.createPane('pane_before_4');
-        map.getPane('pane_before_4').style.zIndex = 404;
-        var img_before_4 = 'data/before_4.png';
-        var img_bounds_before_4 = [[37.47161593122115,137.08964388746963],[37.48298119479002,137.1098024892992]];
-        var layer_before_4 = new L.imageOverlay(img_before_4,
-                                              img_bounds_before_4,
-                                              {pane: 'pane_before_4'});
-        bounds_group.addLayer(layer_before_4);
-        map.addLayer(layer_before_4);
-        map.createPane('pane_after_5');
-        map.getPane('pane_after_5').style.zIndex = 405;
-        var img_after_5 = 'data/after_5.png';
-        var img_bounds_after_5 = [[37.47176129492902,137.09001508538103],[37.483126495045155,137.1101736702775]];
-        var layer_after_5 = new L.imageOverlay(img_after_5,
-                                              img_bounds_after_5,
-                                              {pane: 'pane_after_5'});
-        bounds_group.addLayer(layer_after_5);
-        map.addLayer(layer_after_5);
-        function pop_bv114_6(feature, layer) {
+        layer__1;
+        map.addLayer(layer__1);
+        map.createPane('pane_Google_2');
+        map.getPane('pane_Google_2').style.zIndex = 402;
+        var layer_Google_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s@189&x={x}&y={y}&z={z}', {
+            pane: 'pane_Google_2',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_Google_2;
+        map.addLayer(layer_Google_2);
+        function pop__3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ELEV1'] !== null ? autolinker.link(feature.properties['ELEV1'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? autolinker.link(feature.properties['Layer'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -172,10 +143,2369 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_bv114_6_0() {
-            return {
-                pane: 'pane_bv114_6',
-                radius: 6.0,
+        function style__3_0(feature) {
+            switch(String(feature.properties['Layer'])) {
+                case '090_H28市場_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,84,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '090_H28市場_含有量Pb(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,219,83,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '090_H28市場_溶出量As(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,214,189,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '090_H28市場_溶出量Cr(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,116,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '090_H28市場_溶出量F(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,188,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '090_H28市場_溶出量Hg(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,140,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '091_H30衛生_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(143,217,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '091_H30衛生_溶出量As(配管)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,226,20,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '091_H30衛生_溶出量F(配管)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,99,130,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '091_H30衛生_溶出量Hg(配管)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,97,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '091_H30衛生_溶出量Pb（配管）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,185,84,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_含有量Pb(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,117,214,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量As(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(22,110,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量B(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,113,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量Cr(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,214,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量F(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,142,201,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量Hg(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(169,234,119,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '092_H30建設局_溶出量Pb(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(13,229,139,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '093_1築-1_含有量Pb（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(146,95,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '093_1築-1_溶出量As（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,74,16,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '093_1築-1_溶出量F（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,87,226,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '093_1築-1_溶出量Hg(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,226,60,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '093_1築-1_溶出量Pb（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,103,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '094_1築-1_含有量Pb（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,109,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '094_1築-1_溶出量As(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,124,39,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '094_1築-1_溶出量F(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(142,210,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '094_1築-1_溶出量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,184,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_含有量Pb（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,82,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量As（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(120,146,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量Cr（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,232,101,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量F（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,225,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量Hg(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(66,113,206,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量Pb（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,219,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '095_1築-2_溶出量Se(概況)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,188,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '096_1築-2_含有量Pb（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(37,201,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '096_1築-2_溶出量As（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,36,107,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '096_1築-2_溶出量F（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,82,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '096_1築-2_溶出量Pb（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(17,237,24,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '101_2築-1_As_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,206,72,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '101_2築-1_F_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,82,120,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '101_2築-1_Hg_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,239,106,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '101_2築-1_Pb_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(94,50,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '101_2築-1_含有量Pb（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,224,178,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_Hg_溶出量（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,74,208,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,71,106,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_ガスBe_(概況+詳細)-不明':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,60,113,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_含有量Pb（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,175,133,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_溶出量As（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,211,86,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_溶出量F（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,225,129,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '102_2築-1_溶出量Pb（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,226,123,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_As_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,50,47,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_Cr_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,152,131,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_F_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(57,43,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_Hg_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,232,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_Pb_含有量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(20,200,224,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_Pb_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,31,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '103_2築-2_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,101,156,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_As_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,86,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_Cr_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,168,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_F_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,227,15,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_Hg_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,119,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_Pb_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,234,227,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_Pb_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(67,177,220,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_Se_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,158,226,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '104_3築-3_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,213,119,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '105_3築-6_As_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,109,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '105_3築-6_F_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,105,210,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '105_3築-6_溶出量Cr(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,201,87,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '105_3築-6_溶出量Hg(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,57,170,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '105_3築-6_溶出量Pb(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(16,208,189,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '106_3築-6_Hg_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(126,100,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '106_3築-6_Pb_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(103,206,122,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '106_3築-6_ガスBe_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,209,186,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '106_3築-6_ガスTCE_(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(66,228,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_As_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,202,96,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_Cr_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,75,214,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_F_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(47,223,135,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_Hg_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,131,142,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_Pb_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,77,70,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_溶出量As(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,89,236,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '107_3築-6_溶出量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,87,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '108_3築-6_Pb_含有量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(69,129,234,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_含有量Pb(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,104,161,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_溶出量As(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,69,53,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_溶出量Cr(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,207,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_溶出量F(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,70,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_溶出量Hg(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(207,200,61,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '109_3築-6_溶出量Pb(埋立R4範囲再評価)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,112,218,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '110_3築-7_As_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,220,72,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '110_3築-7_Cr_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,183,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '110_3築-7_F_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,230,96,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '110_3築-7_Hg_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,138,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '110_3築-7_Pb_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,147,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '111_3築-7_Pb_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(18,48,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '115_4築-1_As_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,75,165,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '115_4築-1_Cr_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(22,217,159,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '115_4築-1_F_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,55,33,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '115_4築-1_Hg_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,222,232,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '115_4築-1_Pb_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,129,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '116_4築-1_Pb_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,130,145,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '117_4築-1_Be_ガス検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,239,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '117_4築-1_Be_ガス検出(概況+詳細)-不明':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,144,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '118_4築-1_溶出量As(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,84,234,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '118_4築-1_溶出量Cr(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,228,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '118_4築-1_溶出量F(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,212,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '118_4築-1_溶出量Hg(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,79,229,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '118_4築-1_溶出量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,142,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '119_4築-1_含有量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,94,213,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '120_4築-2_As_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,75,129,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '120_4築-2_Cr_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(207,220,125,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '120_4築-2_F_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(76,236,124,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '120_4築-2_Hg_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,201,155,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '120_4築-2_Pb_溶出量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,63,169,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '121_4築-2_Pb_含有量検出(概況+詳細)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,235,18,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '122_4築-2_溶出量As(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,96,184,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '122_4築-2_溶出量F(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,210,133,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '122_4築-2_溶出量Hg(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,190,226,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '122_4築-2_溶出量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,98,32,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '122_4築-2_溶出量Se(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,27,119,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '123_4築-2_含有量Pb(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(146,31,212,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_As_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,210,82,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_As_溶出量(再調査7点)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(167,121,236,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Cr_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,215,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_F_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(85,211,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Hg_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,23,189,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Hg_溶出量(再調査7点)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,209,71,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Pb_含有量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,210,220,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Pb_含有量(再調査7点)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,56,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Pb_溶出量':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,223,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_5築-2_Pb_溶出量(再調査7点)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,132,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_Cr-地下水基準適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,66,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '130_Cr-地下水調査未完了':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,205,199,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '132_Se-地下水基準不適合（水面埋立範囲）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,89,212,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '133_Pb-地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(159,202,113,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '134_As-第二地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,117,163,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '134_As-地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,139,228,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '134_As-地下水基準不適合（水面埋立範囲）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,151,209,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '135_F-地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,39,213,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '135_F-地下水基準不適合（水面埋立範囲）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(150,123,230,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '136_B-地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,106,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_As_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(63,207,118,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_F_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(187,86,210,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_Hg_溶出量（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,199,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_Pb_含有量（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,58,81,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_Pb_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,203,171,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '150_5築-2_Se_溶出量検出（水面埋立）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,179,214,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '170_1築-1_B_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(180,234,54,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '170_1築-1_F_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(69,210,238,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '170_2築-1_F_溶出量検出(水面埋立)':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,203,110,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '200_As_第二地下水基準不適合':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,137,37,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '200_Hg_第二溶出量不適合（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,187,120,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '200_Hg_第二溶出量不適合（詳細で検出）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(130,63,218,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '200_Pb_第二溶出量不適合（概況）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(73,226,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '200_Pb_第二溶出量不適合（詳細で検出）':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,100,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,70,214,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane__3');
+        map.getPane('pane__3').style.zIndex = 403;
+        map.getPane('pane__3').style['mix-blend-mode'] = 'normal';
+        var layer__3 = new L.geoJson(json__3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__3',
+            layerName: 'layer__3',
+            pane: 'pane__3',
+            onEachFeature: pop__3,
+            style: style__3_0,
+        });
+        bounds_group.addLayer(layer__3);
+        map.addLayer(layer__3);
+        function pop__4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? autolinker.link(feature.properties['Layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style__4_0(feature) {
+            switch(String(feature.properties['Layer'])) {
+                case '※Bor_PS':
+                    return {
+                pane: 'pane__4',
+                shape: 'diamond',
+                radius: 4.0,
                 opacity: 1,
                 color: 'rgba(128,17,25,1.0)',
                 dashArray: '',
@@ -184,38 +2514,151 @@
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(219,30,42,1.0)',
+                fillColor: 'rgba(115,164,203,1.0)',
                 interactive: true,
             }
+                    break;
+                case '※Bor_Soil':
+                    return {
+                pane: 'pane__4',
+                shape: 'diamond',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(128,17,25,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,28,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '※Bor_W':
+                    return {
+                pane: 'pane__4',
+                shape: 'diamond',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(128,17,25,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(170,58,231,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
         }
-        map.createPane('pane_bv114_6');
-        map.getPane('pane_bv114_6').style.zIndex = 406;
-        map.getPane('pane_bv114_6').style['mix-blend-mode'] = 'normal';
-        var layer_bv114_6 = new L.geoJson(json_bv114_6, {
+        map.createPane('pane__4');
+        map.getPane('pane__4').style.zIndex = 404;
+        map.getPane('pane__4').style['mix-blend-mode'] = 'normal';
+        var layer__4 = new L.geoJson(json__4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_bv114_6',
-            layerName: 'layer_bv114_6',
-            pane: 'pane_bv114_6',
-            onEachFeature: pop_bv114_6,
+            dataVar: 'json__4',
+            layerName: 'layer__4',
+            pane: 'pane__4',
+            onEachFeature: pop__4,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_bv114_6_0(feature));
+                return L.shapeMarker(latlng, style__4_0(feature));
             },
         });
-        bounds_group.addLayer(layer_bv114_6);
-        map.addLayer(layer_bv114_6);
+        bounds_group.addLayer(layer__4);
+        map.addLayer(layer__4);
+        function pop_entities_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? autolinker.link(feature.properties['Linetype'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EntityHandle'] !== null ? autolinker.link(feature.properties['EntityHandle'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Text'] !== null ? autolinker.link(feature.properties['Text'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_entities_5_0(feature) {
+            switch(String(feature.properties['Layer'])) {
+                case '010_10ｍメッシュ':
+                    return {
+                pane: 'pane_entities_5',
+                opacity: 1,
+                color: 'rgba(19,161,161,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case '010_30ｍ格子':
+                    return {
+                pane: 'pane_entities_5',
+                opacity: 1,
+                color: 'rgba(1,39,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_entities_5',
+                opacity: 1,
+                color: 'rgba(161,124,230,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_entities_5');
+        map.getPane('pane_entities_5').style.zIndex = 405;
+        map.getPane('pane_entities_5').style['mix-blend-mode'] = 'normal';
+        var layer_entities_5 = new L.geoJson(json_entities_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_entities_5',
+            layerName: 'layer_entities_5',
+            pane: 'pane_entities_5',
+            onEachFeature: pop_entities_5,
+            style: style_entities_5_0,
+        });
+        bounds_group.addLayer(layer_entities_5);
+        map.addLayer(layer_entities_5);
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/bv114_6.png" /> bv114+', layer: layer_bv114_6},
-            {label: "after", layer: layer_after_5},
-            {label: "before", layer: layer_before_4},
-            {label: "aist", layer: layer_aist_3},
-            {label: "標準地図", layer: layer__2},
-            {label: "Google 航空写真", layer: layer_Google_1},
+        {label: '<b>mesh_sjis</b>', selectAllCheckbox: true, children: [
+            {label: 'entities<br /><table><tr><td style="text-align: center;"><img src="legend/entities_5_01010ｍメッシュ0.png" /></td><td>010_10ｍメッシュ</td></tr><tr><td style="text-align: center;"><img src="legend/entities_5_01030ｍ格子1.png" /></td><td>010_30ｍ格子</td></tr><tr><td style="text-align: center;"><img src="legend/entities_5_2.png" /></td><td></td></tr></table>', layer: layer_entities_5},]},
+            {label: '重心<br /><table><tr><td style="text-align: center;"><img src="legend/_4_PS検層0.png" /></td><td>PS検層</td></tr><tr><td style="text-align: center;"><img src="legend/_4_地質調査地点1.png" /></td><td>地質調査地点</td></tr><tr><td style="text-align: center;"><img src="legend/_4_帯水層調査地点2.png" /></td><td>帯水層調査地点</td></tr></table>', layer: layer__4},
+        {label: '<b>futekigou_sjis</b>', selectAllCheckbox: true, children: [
+            {label: '形質変更時要届出区域<br /><table><tr><td style="text-align: center;"><img src="legend/_3_090H28市場ガスBe概況詳細0.png" /></td><td>090_H28市場_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_090H28市場含有量Pb概況1.png" /></td><td>090_H28市場_含有量Pb(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_090H28市場溶出量As概況2.png" /></td><td>090_H28市場_溶出量As(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_090H28市場溶出量Cr概況3.png" /></td><td>090_H28市場_溶出量Cr(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_090H28市場溶出量F概況4.png" /></td><td>090_H28市場_溶出量F(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_090H28市場溶出量Hg概況5.png" /></td><td>090_H28市場_溶出量Hg(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_091H30衛生ガスBe概況詳細6.png" /></td><td>091_H30衛生_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_091H30衛生溶出量As配管7.png" /></td><td>091_H30衛生_溶出量As(配管)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_091H30衛生溶出量F配管8.png" /></td><td>091_H30衛生_溶出量F(配管)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_091H30衛生溶出量Hg配管9.png" /></td><td>091_H30衛生_溶出量Hg(配管)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_091H30衛生溶出量Pb配管10.png" /></td><td>091_H30衛生_溶出量Pb（配管）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局含有量Pb概況11.png" /></td><td>092_H30建設局_含有量Pb(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量As概況12.png" /></td><td>092_H30建設局_溶出量As(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量B概況13.png" /></td><td>092_H30建設局_溶出量B(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量Cr概況14.png" /></td><td>092_H30建設局_溶出量Cr(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量F概況15.png" /></td><td>092_H30建設局_溶出量F(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量Hg概況16.png" /></td><td>092_H30建設局_溶出量Hg(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_092H30建設局溶出量Pb概況17.png" /></td><td>092_H30建設局_溶出量Pb(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0931築1含有量Pb概況18.png" /></td><td>093_1築-1_含有量Pb（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0931築1溶出量As概況19.png" /></td><td>093_1築-1_溶出量As（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0931築1溶出量F概況20.png" /></td><td>093_1築-1_溶出量F（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0931築1溶出量Hg概況21.png" /></td><td>093_1築-1_溶出量Hg(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0931築1溶出量Pb概況22.png" /></td><td>093_1築-1_溶出量Pb（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0941築1含有量Pb水面埋立23.png" /></td><td>094_1築-1_含有量Pb（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0941築1溶出量As水面埋立24.png" /></td><td>094_1築-1_溶出量As(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0941築1溶出量F水面埋立25.png" /></td><td>094_1築-1_溶出量F(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0941築1溶出量Pb水面埋立26.png" /></td><td>094_1築-1_溶出量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2含有量Pb概況27.png" /></td><td>095_1築-2_含有量Pb（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量As概況28.png" /></td><td>095_1築-2_溶出量As（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量Cr概況29.png" /></td><td>095_1築-2_溶出量Cr（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量F概況30.png" /></td><td>095_1築-2_溶出量F（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量Hg概況31.png" /></td><td>095_1築-2_溶出量Hg(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量Pb概況32.png" /></td><td>095_1築-2_溶出量Pb（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0951築2溶出量Se概況33.png" /></td><td>095_1築-2_溶出量Se(概況)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0961築2含有量Pb水面埋立34.png" /></td><td>096_1築-2_含有量Pb（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0961築2溶出量As水面埋立35.png" /></td><td>096_1築-2_溶出量As（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0961築2溶出量F水面埋立36.png" /></td><td>096_1築-2_溶出量F（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_0961築2溶出量Pb水面埋立37.png" /></td><td>096_1築-2_溶出量Pb（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1012築1As溶出量38.png" /></td><td>101_2築-1_As_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1012築1F溶出量39.png" /></td><td>101_2築-1_F_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1012築1Hg溶出量40.png" /></td><td>101_2築-1_Hg_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1012築1Pb溶出量41.png" /></td><td>101_2築-1_Pb_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1012築1含有量Pb概況42.png" /></td><td>101_2築-1_含有量Pb（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1Hg溶出量水面埋立43.png" /></td><td>102_2築-1_Hg_溶出量（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1ガスBe概況詳細44.png" /></td><td>102_2築-1_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1ガスBe概況詳細不明45.png" /></td><td>102_2築-1_ガスBe_(概況+詳細)-不明</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1含有量Pb水面埋立46.png" /></td><td>102_2築-1_含有量Pb（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1溶出量As水面埋立47.png" /></td><td>102_2築-1_溶出量As（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1溶出量F水面埋立48.png" /></td><td>102_2築-1_溶出量F（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1022築1溶出量Pb水面埋立49.png" /></td><td>102_2築-1_溶出量Pb（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2As溶出量50.png" /></td><td>103_2築-2_As_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2Cr溶出量51.png" /></td><td>103_2築-2_Cr_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2F溶出量52.png" /></td><td>103_2築-2_F_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2Hg溶出量53.png" /></td><td>103_2築-2_Hg_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2Pb含有量54.png" /></td><td>103_2築-2_Pb_含有量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2Pb溶出量55.png" /></td><td>103_2築-2_Pb_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1032築2ガスBe概況詳細56.png" /></td><td>103_2築-2_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3As溶出量検出概況詳細57.png" /></td><td>104_3築-3_As_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3Cr溶出量検出概況詳細58.png" /></td><td>104_3築-3_Cr_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3F溶出量検出概況詳細59.png" /></td><td>104_3築-3_F_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3Hg溶出量検出概況詳細60.png" /></td><td>104_3築-3_Hg_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3Pb含有量検出概況詳細61.png" /></td><td>104_3築-3_Pb_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3Pb溶出量検出概況詳細62.png" /></td><td>104_3築-3_Pb_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3Se溶出量検出概況詳細63.png" /></td><td>104_3築-3_Se_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1043築3ガスBe概況詳細64.png" /></td><td>104_3築-3_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1053築6As溶出量検出概況詳細65.png" /></td><td>105_3築-6_As_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1053築6F溶出量検出概況詳細66.png" /></td><td>105_3築-6_F_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1053築6溶出量Cr概況詳細67.png" /></td><td>105_3築-6_溶出量Cr(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1053築6溶出量Hg概況詳細68.png" /></td><td>105_3築-6_溶出量Hg(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1053築6溶出量Pb概況詳細69.png" /></td><td>105_3築-6_溶出量Pb(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1063築6Hg含有量検出概況詳細70.png" /></td><td>106_3築-6_Hg_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1063築6Pb含有量検出概況詳細71.png" /></td><td>106_3築-6_Pb_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1063築6ガスBe概況詳細72.png" /></td><td>106_3築-6_ガスBe_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1063築6ガスTCE概況詳細73.png" /></td><td>106_3築-6_ガスTCE_(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6As溶出量検出水面埋立74.png" /></td><td>107_3築-6_As_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6Cr溶出量検出水面埋立75.png" /></td><td>107_3築-6_Cr_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6F溶出量検出水面埋立76.png" /></td><td>107_3築-6_F_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6Hg溶出量検出水面埋立77.png" /></td><td>107_3築-6_Hg_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6Pb溶出量検出水面埋立78.png" /></td><td>107_3築-6_Pb_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6溶出量As水面埋立79.png" /></td><td>107_3築-6_溶出量As(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1073築6溶出量Pb水面埋立80.png" /></td><td>107_3築-6_溶出量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1083築6Pb含有量検出水面埋立81.png" /></td><td>108_3築-6_Pb_含有量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6含有量Pb埋立R4範囲再評価82.png" /></td><td>109_3築-6_含有量Pb(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6溶出量As埋立R4範囲再評価83.png" /></td><td>109_3築-6_溶出量As(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6溶出量Cr埋立R4範囲再評価84.png" /></td><td>109_3築-6_溶出量Cr(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6溶出量F埋立R4範囲再評価85.png" /></td><td>109_3築-6_溶出量F(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6溶出量Hg埋立R4範囲再評価86.png" /></td><td>109_3築-6_溶出量Hg(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1093築6溶出量Pb埋立R4範囲再評価87.png" /></td><td>109_3築-6_溶出量Pb(埋立R4範囲再評価)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1103築7As溶出量検出概況詳細88.png" /></td><td>110_3築-7_As_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1103築7Cr溶出量検出概況詳細89.png" /></td><td>110_3築-7_Cr_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1103築7F溶出量検出概況詳細90.png" /></td><td>110_3築-7_F_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1103築7Hg溶出量検出概況詳細91.png" /></td><td>110_3築-7_Hg_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1103築7Pb溶出量検出概況詳細92.png" /></td><td>110_3築-7_Pb_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1113築7Pb含有量検出概況詳細93.png" /></td><td>111_3築-7_Pb_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1154築1As溶出量検出概況詳細94.png" /></td><td>115_4築-1_As_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1154築1Cr溶出量検出概況詳細95.png" /></td><td>115_4築-1_Cr_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1154築1F溶出量検出概況詳細96.png" /></td><td>115_4築-1_F_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1154築1Hg溶出量検出概況詳細97.png" /></td><td>115_4築-1_Hg_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1154築1Pb溶出量検出概況詳細98.png" /></td><td>115_4築-1_Pb_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1164築1Pb含有量検出概況詳細99.png" /></td><td>116_4築-1_Pb_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1174築1Beガス検出概況詳細100.png" /></td><td>117_4築-1_Be_ガス検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1174築1Beガス検出概況詳細不明101.png" /></td><td>117_4築-1_Be_ガス検出(概況+詳細)-不明</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1184築1溶出量As水面埋立102.png" /></td><td>118_4築-1_溶出量As(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1184築1溶出量Cr水面埋立103.png" /></td><td>118_4築-1_溶出量Cr(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1184築1溶出量F水面埋立104.png" /></td><td>118_4築-1_溶出量F(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1184築1溶出量Hg水面埋立105.png" /></td><td>118_4築-1_溶出量Hg(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1184築1溶出量Pb水面埋立106.png" /></td><td>118_4築-1_溶出量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1194築1含有量Pb水面埋立107.png" /></td><td>119_4築-1_含有量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1204築2As溶出量検出概況詳細108.png" /></td><td>120_4築-2_As_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1204築2Cr溶出量検出概況詳細109.png" /></td><td>120_4築-2_Cr_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1204築2F溶出量検出概況詳細110.png" /></td><td>120_4築-2_F_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1204築2Hg溶出量検出概況詳細111.png" /></td><td>120_4築-2_Hg_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1204築2Pb溶出量検出概況詳細112.png" /></td><td>120_4築-2_Pb_溶出量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1214築2Pb含有量検出概況詳細113.png" /></td><td>121_4築-2_Pb_含有量検出(概況+詳細)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1224築2溶出量As水面埋立114.png" /></td><td>122_4築-2_溶出量As(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1224築2溶出量F水面埋立115.png" /></td><td>122_4築-2_溶出量F(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1224築2溶出量Hg水面埋立116.png" /></td><td>122_4築-2_溶出量Hg(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1224築2溶出量Pb水面埋立117.png" /></td><td>122_4築-2_溶出量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1224築2溶出量Se水面埋立118.png" /></td><td>122_4築-2_溶出量Se(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1234築2含有量Pb水面埋立119.png" /></td><td>123_4築-2_含有量Pb(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2As溶出量120.png" /></td><td>130_5築-2_As_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2As溶出量再調査7点121.png" /></td><td>130_5築-2_As_溶出量(再調査7点)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Cr溶出量122.png" /></td><td>130_5築-2_Cr_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2F溶出量123.png" /></td><td>130_5築-2_F_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Hg溶出量124.png" /></td><td>130_5築-2_Hg_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Hg溶出量再調査7点125.png" /></td><td>130_5築-2_Hg_溶出量(再調査7点)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Pb含有量126.png" /></td><td>130_5築-2_Pb_含有量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Pb含有量再調査7点127.png" /></td><td>130_5築-2_Pb_含有量(再調査7点)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Pb溶出量128.png" /></td><td>130_5築-2_Pb_溶出量</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1305築2Pb溶出量再調査7点129.png" /></td><td>130_5築-2_Pb_溶出量(再調査7点)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_130Cr地下水基準適合130.png" /></td><td>130_Cr-地下水基準適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_130Cr地下水調査未完了131.png" /></td><td>130_Cr-地下水調査未完了</td></tr><tr><td style="text-align: center;"><img src="legend/_3_132Se地下水基準不適合水面埋立範囲132.png" /></td><td>132_Se-地下水基準不適合（水面埋立範囲）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_133Pb地下水基準不適合133.png" /></td><td>133_Pb-地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_134As第二地下水基準不適合134.png" /></td><td>134_As-第二地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_134As地下水基準不適合135.png" /></td><td>134_As-地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_134As地下水基準不適合水面埋立範囲136.png" /></td><td>134_As-地下水基準不適合（水面埋立範囲）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_135F地下水基準不適合137.png" /></td><td>135_F-地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_135F地下水基準不適合水面埋立範囲138.png" /></td><td>135_F-地下水基準不適合（水面埋立範囲）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_136B地下水基準不適合139.png" /></td><td>136_B-地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2As溶出量検出水面埋立140.png" /></td><td>150_5築-2_As_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2F溶出量検出水面埋立141.png" /></td><td>150_5築-2_F_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2Hg溶出量水面埋立142.png" /></td><td>150_5築-2_Hg_溶出量（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2Pb含有量水面埋立143.png" /></td><td>150_5築-2_Pb_含有量（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2Pb溶出量検出水面埋立144.png" /></td><td>150_5築-2_Pb_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1505築2Se溶出量検出水面埋立145.png" /></td><td>150_5築-2_Se_溶出量検出（水面埋立）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1701築1B溶出量検出水面埋立146.png" /></td><td>170_1築-1_B_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1701築1F溶出量検出水面埋立147.png" /></td><td>170_1築-1_F_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_1702築1F溶出量検出水面埋立148.png" /></td><td>170_2築-1_F_溶出量検出(水面埋立)</td></tr><tr><td style="text-align: center;"><img src="legend/_3_200As第二地下水基準不適合149.png" /></td><td>200_As_第二地下水基準不適合</td></tr><tr><td style="text-align: center;"><img src="legend/_3_200Hg第二溶出量不適合概況150.png" /></td><td>200_Hg_第二溶出量不適合（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_200Hg第二溶出量不適合詳細で検出151.png" /></td><td>200_Hg_第二溶出量不適合（詳細で検出）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_200Pb第二溶出量不適合概況152.png" /></td><td>200_Pb_第二溶出量不適合（概況）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_200Pb第二溶出量不適合詳細で検出153.png" /></td><td>200_Pb_第二溶出量不適合（詳細で検出）</td></tr><tr><td style="text-align: center;"><img src="legend/_3_154.png" /></td><td></td></tr></table>', layer: layer__3},]},
+            {label: "Google 航空写真", layer: layer_Google_2},
+            {label: "標準地図", layer: layer__1},
             {label: "Google", layer: layer_Google_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -228,11 +2671,6 @@
         });
         lay.addTo(map);
         setBounds();
-        L.ImageOverlay.include({
-            getBounds: function () {
-                return this._bounds;
-            }
-        });
         </script>
     </body>
 </html>
