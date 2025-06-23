@@ -1,166 +1,120 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css">
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-        </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="js/leaflet-tilelayer-wmts.js"></script>
-        <script src="js/leaflet-measure.js"></script>
-        <script>
-        var map = L.map('map', {
-            zoomControl:false, maxZoom:21, minZoom:1
-        }).fitBounds([[35.95941995923887,136.23045146894347],[36.207206086248334,136.52096484391154]]);
-        var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        // remove popup's row if "visible-with-data"
-        function removeEmptyRowsFromPopupContent(content, feature) {
-         var tempDiv = document.createElement('div');
-         tempDiv.innerHTML = content;
-         var rows = tempDiv.querySelectorAll('tr');
-         for (var i = 0; i < rows.length; i++) {
-             var td = rows[i].querySelector('td.visible-with-data');
-             var key = td ? td.id : '';
-             if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
-                 rows[i].parentNode.removeChild(rows[i]);
-             }
-         }
-         return tempDiv.innerHTML;
-        }
-        // add class to format popup if it contains media
-		function addClassToPopupIfMedia(content, popup) {
-			var tempDiv = document.createElement('div');
-			tempDiv.innerHTML = content;
-			if (tempDiv.querySelector('td img')) {
-				popup._contentNode.classList.add('media');
-					// Delay to force the redraw
-					setTimeout(function() {
-						popup.update();
-					}, 10);
-			} else {
-				popup._contentNode.classList.remove('media');
-			}
-		}
-        var zoomControl = L.control.zoom({
-            position: 'topleft'
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>霞ヶ浦 GeoJSON + 描画ツール + 範囲内アラート</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+  <script>
+    const map = L.map('map');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    const drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    const drawControl = new L.Control.Draw({
+      edit: {
+        featureGroup: drawnItems
+      },
+      draw: {
+        polygon: true,
+        polyline: false,
+        rectangle: false,
+        circle: false,
+        marker: false,
+        circlemarker: false
+      }
+    });
+    map.addControl(drawControl);
+
+    let kasumigauraLayer = null;
+
+    // GeoJSON読み込みとEPSG:3857 -> EPSG:4326変換
+    fetch('kasumigaura.geojson')
+      .then(response => response.json())
+      .then(data => {
+        const toLatLng = ([x, y]) => L.Projection.SphericalMercator.unproject(L.point(x, y));
+
+        const transformed = {
+          type: "FeatureCollection",
+          features: data.features.map(f => {
+            const coords = f.geometry.coordinates[0].map(toLatLng);
+            return {
+              type: "Feature",
+              properties: f.properties,
+              geometry: {
+                type: "Polygon",
+                coordinates: [coords.map(c => [c.lng, c.lat])]
+              }
+            };
+          })
+        };
+
+        kasumigauraLayer = L.geoJSON(transformed, {
+          style: {
+            color: "blue",
+            weight: 2,
+            fillColor: "lightblue",
+            fillOpacity: 0.4
+          }
         }).addTo(map);
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-        var measureControl = new L.Control.Measure({
-            position: 'topleft',
-            primaryLengthUnit: 'meters',
-            secondaryLengthUnit: 'kilometers',
-            primaryAreaUnit: 'sqmeters',
-            secondaryAreaUnit: 'hectares'
-        });
-        measureControl.addTo(map);
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0].innerHTML = '';
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += ' fas fa-ruler';
-        var bounds_group = new L.featureGroup([]);
-        function setBounds() {
+
+        map.fitBounds(kasumigauraLayer.getBounds(), { padding: [20, 20], maxZoom: 14 });
+      })
+      .catch(err => console.error('GeoJSON読み込みエラー:', err));
+
+    // クリック時にkasumigauraのポリゴン内かどうか判定
+    map.on('click', function (e) {
+      if (!kasumigauraLayer) return;
+
+      let inside = false;
+
+      kasumigauraLayer.eachLayer(function (layer) {
+        if (layer instanceof L.Polygon && leafletPip.pointInLayer(e.latlng, layer).length > 0) {
+          inside = true;
         }
-        map.createPane('pane_Google_0');
-        map.getPane('pane_Google_0').style.zIndex = 400;
-        var layer_Google_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-            pane: 'pane_Google_0',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 1,
-            maxZoom: 21,
-            minNativeZoom: 0,
-            maxNativeZoom: 21
-        });
-        layer_Google_0;
-        map.addLayer(layer_Google_0);
-        map.createPane('pane__1');
-        map.getPane('pane__1').style.zIndex = 401;
-        var layer__1 = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-            pane: 'pane__1',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 1,
-            maxZoom: 21,
-            minNativeZoom: 0,
-            maxNativeZoom: 18
-        });
-        layer__1;
-        map.addLayer(layer__1);
-        map.createPane('pane_751_1939_2');
-        map.getPane('pane_751_1939_2').style.zIndex = 402;
-        var layer_751_1939_2 = L.tileLayer.wmts('https://gbank.gsj.jp/geonavi/maptile/wmts/1.0.0/WMTSCapabilities.xm', {
-            pane: 'pane_751_1939_2',
-            layer: 'G75_149fukui',
-            tilematrixSet: 'GoogleMapsCompatible',
-            format: 'image/png',
-            style: 'default',
-            uppercase: true,
-            transparent: true,
-            continuousWorld : true,
-            opacity: 1.0,
-            attribution: '',
-        });
-        map.addLayer(layer_751_1939_2);
-        map.createPane('pane_eiheiji_3');
-        map.getPane('pane_eiheiji_3').style.zIndex = 403;
-        var img_eiheiji_3 = 'data/eiheiji_3.png';
-        var img_bounds_eiheiji_3 = [[36.007236730575606,136.24330035426738],[36.15947984833788,136.50783998869028]];
-        var layer_eiheiji_3 = new L.imageOverlay(img_eiheiji_3,
-                                              img_bounds_eiheiji_3,
-                                              {pane: 'pane_eiheiji_3'});
-        bounds_group.addLayer(layer_eiheiji_3);
-        map.addLayer(layer_eiheiji_3);
-        var overlaysTree = [
-            {label: "eiheiji", layer: layer_eiheiji_3},
-            {label: "7万5千分の1地質図幅_福井(1939)", layer: layer_751_1939_2},
-            {label: "標準地図", layer: layer__1},
-            {label: "Google", layer: layer_Google_0},]
-        var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
-            collapsed: true,
-        });
-        lay.addTo(map);
-        setBounds();
-        L.ImageOverlay.include({
-            getBounds: function () {
-                return this._bounds;
-            }
-        });
-        </script>
-    </body>
+      });
+
+      if (inside) {
+        alert("クリック地点は霞ヶ浦の範囲内です。");
+      }
+    });
+
+    // Leaflet.PIP（Point In Polygon）ライブラリを使う
+    // 簡易実装（GeoJSONだけに対応）
+    const leafletPip = {
+      pointInLayer: function (latlng, layer) {
+        const x = latlng.lng;
+        const y = latlng.lat;
+        const poly = layer.getLatLngs()[0];
+        let inside = false;
+        for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+          const xi = poly[i].lng, yi = poly[i].lat;
+          const xj = poly[j].lng, yj = poly[j].lat;
+
+          const intersect = ((yi > y) !== (yj > y)) &&
+            (x < (xj - xi) * (y - yi) / (yj - yi + 1e-12) + xi);
+          if (intersect) inside = !inside;
+        }
+        return inside ? [layer] : [];
+      }
+    };
+  </script>
+</body>
 </html>
